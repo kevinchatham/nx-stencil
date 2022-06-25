@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "angular-ui": "packages/angular-ui",
+    "core-components": "packages/core-components",
+    "core-components-angular": "packages/core-components-angular",
+    "core-components-react": "packages/core-components-react",
+    "react-ui": "packages/react-ui",
+    "react-ui-e2e": "packages/react-ui-e2e"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "projectType": "application",
+  "sourceRoot": "packages/angular-ui/src",
+  "prefix": "web-components",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/angular-ui",
+        "index": "packages/angular-ui/src/index.html",
+        "main": "packages/angular-ui/src/main.ts",
+        "polyfills": "packages/angular-ui/src/polyfills.ts",
+        "tsConfig": "packages/angular-ui/tsconfig.app.json",
+        "assets": [
+          "packages/angular-ui/src/favicon.ico",
+          "packages/angular-ui/src/assets"
+        ],
+        "styles": ["packages/angular-ui/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "packages/angular-ui/src/environments/environment.ts",
+              "with": "packages/angular-ui/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "angular-ui:build:production"
+        },
+        "development": {
+          "browserTarget": "angular-ui:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "angular-ui:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/angular-ui/**/*.ts",
+          "packages/angular-ui/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/angular-ui"],
+      "options": {
+        "jestConfig": "packages/angular-ui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
